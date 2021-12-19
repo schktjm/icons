@@ -6,9 +6,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: set directory
-        working-directory: script
       - name: node setup
+        working-directory: script
         uses: actions/setup-node@v2
         with:
           node-version: "12"
