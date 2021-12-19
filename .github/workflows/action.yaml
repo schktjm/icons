@@ -9,7 +9,7 @@ jobs:
       - name: node setup
         working-directory: ./script
         uses: actions/setup-node@v2
-          with:
-            node-version: "12"
+        with:
+          node-version: "12"
         run: npm install
         run: npm run start FIGMA_TOKEN={{ secrets.FIGMA_TOKEN }}
