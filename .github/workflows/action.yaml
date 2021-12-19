@@ -1,0 +1,13 @@
+name: Export SVG from Figma
+on: [push]
+jobs:
+  all:
+    name: Figma Export
+    runs-on: ubuntu-latest
+    steps:
+      - uses: primer/figma-action@v1.0.0-alpha.3
+        with:
+          args: "format=svg outputDir=./src/"
+        env:
+          FIGMA_FILE_URL: "https://www.figma.com/file/YhHWg9mZ6GdKkseHAAS1gw/testing"
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
