@@ -20,4 +20,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "downloaded from Figma"
-          git push origin ${{ github.ref }}
+          echo "${GITHUB_REF#refs/heads/}"
+          echo "${GITHUB_HEAD_REF}"
+          echo "${ github.ref }"
+          git push origin ${{GITHUB_REF#refs/heads/}}
