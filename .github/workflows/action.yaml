@@ -1,16 +1,16 @@
 name: Export SVG from Figma
 on: [push, pull_request]
 jobs:
-  name: Figma Export
-  runs-on: ubuntu-latest
-  steps:
-    - name: checkout
-      uses: actions/checkout@v2
-    - name: set directory
-      working-directory: script
-    - name: node setup
-      uses: actions/setup-node@v2
-      with:
-        node-version: "12"
-      run: npm install
-      run: npm run start FIGMA_TOKEN={{ secrets.FIGMA_TOKEN }}
+  actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: set directory
+        working-directory: script
+      - name: node setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+        run: npm install
+        run: npm run start FIGMA_TOKEN={{ secrets.FIGMA_TOKEN }}
