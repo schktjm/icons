@@ -7,9 +7,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: node setup
-        working-directory: ./script
         uses: actions/setup-node@v2
         with:
           node-version: "12"
-        run: npm install
-        run: npm run start FIGMA_TOKEN={{ secrets.FIGMA_TOKEN }}
+      - run: cd script; npm install
+      - run: cd script; npm run start FIGMA_TOKEN={{ secrets.FIGMA_TOKEN }}
