@@ -1,5 +1,5 @@
 name: Export SVG from Figma
-on: [pull_request]
+on: [push]
 jobs:
   actions:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "downloaded from Figma"
-          echo "${GITHUB_REF#refs/heads/}"
-          echo "${GITHUB_HEAD_REF}"
-          echo "${ github.ref }"
-          git push origin ${{GITHUB_REF#refs/heads/}}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}`
