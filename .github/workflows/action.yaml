@@ -1,5 +1,5 @@
 name: Export SVG from Figma
-on: [push, pull_request]
+on: [pull_request]
 jobs:
   actions:
     runs-on: ubuntu-latest
@@ -14,3 +14,10 @@ jobs:
           node-version: "12"
       - run: cd script; npm install
       - run: cd script; npm run start
+      - name: Commit
+        run: |
+          git config --local user.email "github_actions@example.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "downloaded from Figma"
+          git push origin HEAD
