@@ -3,6 +3,8 @@ on: [push, pull_request]
 jobs:
   actions:
     runs-on: ubuntu-latest
+    env:
+      FIGMA_TOKEN: { { secrets.FIGMA_TOKEN } }
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -11,4 +13,4 @@ jobs:
         with:
           node-version: "12"
       - run: cd script; npm install
-      - run: cd script; npm run start FIGMA_TOKEN={{ secrets.FIGMA_TOKEN }}
+      - run: cd script; npm run start
