@@ -1,13 +1,30 @@
 name: Export SVG from Figma
-on: [push]
+on:
+  schedule:
+    cron: "0 0 * * *"
+
 jobs:
-  all:
-    name: Figma Export
+  actions:
     runs-on: ubuntu-latest
+    env:
+      FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
     steps:
-      - uses: primer/figma-action@v1.0.0-alpha.3
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: node setup
+        uses: actions/setup-node@v2
         with:
-          args: "format=svg outputDir=./build/"
-        env:
-          FIGMA_FILE_URL: "https://www.figma.com/file/YhHWg9mZ6GdKkseHAAS1gw/testing"
-          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+          node-version: "12"
+      - run: cd script; npm install
+      - run: cd script; npm run start
+      - name: Commit
+        run: |
+          git config --local user.email "github_actions@example.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "downloaded from Figma"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}`
+          branch: master
