@@ -1,5 +1,8 @@
 name: Export SVG from Figma
-on: [push]
+on:
+  schedule:
+    cron: "0 0 * * *"
+
 jobs:
   actions:
     runs-on: ubuntu-latest
@@ -24,4 +27,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.TOKEN }}`
-          branch: ${{ github.ref }}
+          branch: master
