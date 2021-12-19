@@ -4,7 +4,7 @@ jobs:
   actions:
     runs-on: ubuntu-latest
     env:
-      FIGMA_TOKEN: { { secrets.FIGMA_TOKEN } }
+      FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
     steps:
       - name: checkout
         uses: actions/checkout@v2
