@@ -1,5 +1,5 @@
 name: Export SVG from Figma
-on: [push]
+on: [push, pull_request]
 jobs:
   name: Figma Export
   runs-on: ubuntu-latest
